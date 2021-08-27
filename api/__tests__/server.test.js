@@ -1,5 +1,5 @@
-const request = require('supertest')
-const server = require('../server')
+const request = require('supertest')  // eslint-disable-line
+const server = require('../server')   // eslint-disable-line
 const db = require('../data/db-config')
 
 beforeAll(async () => {

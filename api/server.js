@@ -3,6 +3,9 @@ const helmet = require('helmet')
 const cors = require('cors')
 const db = require('./data/db-config')
 
+const authRouter = require("./auth/auth-router.js");
+const usersRouter = require("./users/users-router.js");
+
 function getAllUsers() { return db('users') }
 
 async function insertUser(user) {
@@ -17,6 +20,9 @@ const server = express()
 server.use(express.json())
 server.use(helmet())
 server.use(cors())
+
+server.use("/api/auth", authRouter);
+server.use("/api/users", usersRouter);
 
 server.get('/api/users', async (req, res) => {
   res.json(await getAllUsers())
